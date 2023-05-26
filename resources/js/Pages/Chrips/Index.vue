@@ -1,9 +1,12 @@
 <script setup>
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import Chrip from '@/Components/Chrip.vue';
 import InputError from '@/Components/InputError.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import { useForm, Head } from '@inertiajs/vue3';
- 
+
+defineProps(['chrips']);
+
 const form = useForm({
     message: '',
 });
@@ -23,6 +26,13 @@ const form = useForm({
                 <InputError :message="form.errors.message" class="mt-2" />
                 <PrimaryButton class="mt-4">Chrip</PrimaryButton>
             </form>
+            <div class="mt-6 bg-white shadow-sm rounded-lg divide-y">
+                <Chrip
+                    v-for="chrip in chrips"
+                    :key="chrip.id"
+                    :chrip="chrip"
+                />
+            </div>
         </div>
     </AuthenticatedLayout>
 </template>
