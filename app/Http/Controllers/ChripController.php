@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chrip;
+use Iluminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\response;
@@ -38,9 +39,15 @@ class ChripController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
-        //
+        $validated = $request->validate([
+            'message' => 'required|sring|mas:255',
+        ]);
+
+        $request->user()->chrips()->create($validated);
+
+        return redirect(route('chrips.index'));
     }
 
     /**
