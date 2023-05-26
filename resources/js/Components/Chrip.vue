@@ -10,9 +10,9 @@ import { ref } from 'vue';
 dayjs.extend(relativeTime);
 
 const props = defineProps(['chrip']);
-const form = useForm([
+const form = useForm({
     message: props.chrip.message,
-]);
+});
 
 const editing = ref(false);
 
@@ -53,7 +53,7 @@ const editing = ref(false);
                     <button class="mt-4" @click="editing = false; form.reset(); form.clearErrors()">Cancel</button>
                 </div>
             </form>
-            <p v-else class="mt-4 text-lg text-gray-900">{{ chirp.message }}</p>
+            <p v-else class="mt-4 text-lg text-gray-900">{{ chrip.message }}</p>
 
         </div>
     </div> 
