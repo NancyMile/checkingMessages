@@ -79,9 +79,17 @@ class ChripController extends Controller
      * @param  \App\Models\Chrip  $chrip
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Chrip $chrip)
+    public function update(Request $request, Chrip $chrip): RedirectResponse
     {
-        //
+        $this->authorize('update', $chrip);
+
+        $validated = $request->validate([
+            'message' => 'required|string|max:255',
+        ]);
+
+        $chrip->update($validated);
+
+        return redirect(route('chrips.index'));
     }
 
     /**
