@@ -37,6 +37,6 @@ Route::middleware('auth')->group(function () {
 
 Route::resource('chrips',ChripController::class)
     ->only(['index','store'])
-    ->middleware(['auth','verified']);
+    ->middleware(['auth','verified','update']);
 
 require __DIR__.'/auth.php';
