@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\Chrip;
 use Illuminate\Http\Request;
+use Inertia\Inertia;
+use Inertia\response;
+
 
 class ChripController extends Controller
 {
@@ -12,9 +15,11 @@ class ChripController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(): Response
     {
-        //
+        return Inertia::render('Chrips/Index',[
+            //
+        ]);
     }
 
     /**
