@@ -98,8 +98,10 @@ class ChripController extends Controller
      * @param  \App\Models\Chrip  $chrip
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Chrip $chrip)
+    public function destroy(Chrip $chrip): RedirectResponse
     {
-        //
+        $this->authorize('delete', $chrip);
+        $chrip->delete();
+        return redirect(route('chrips.index'));
     }
 }
