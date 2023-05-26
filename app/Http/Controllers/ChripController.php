@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Chrip;
-use Iluminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\response;
@@ -42,7 +42,7 @@ class ChripController extends Controller
     public function store(Request $request): RedirectResponse
     {
         $validated = $request->validate([
-            'message' => 'required|sring|mas:255',
+            'message' => 'required|string|max:255',
         ]);
 
         $request->user()->chrips()->create($validated);
