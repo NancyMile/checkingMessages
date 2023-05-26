@@ -19,7 +19,7 @@ class ChripController extends Controller
     public function index(): Response
     {
         return Inertia::render('Chrips/Index',[
-            //
+            'chrips' => Chrip::with('user:id,name')->latest()->get(),
         ]);
     }
 
