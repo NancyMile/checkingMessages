@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\database\Eloquent\BelongsTo;
 
 class Chrip extends Model
 {
@@ -12,4 +13,10 @@ class Chrip extends Model
     protected $fillable =  [
         'message',
     ];
+
+
+    public function user(): BelongsTo
+    {
+        return $this-> belongsTo(User::class);
+    }
 }
