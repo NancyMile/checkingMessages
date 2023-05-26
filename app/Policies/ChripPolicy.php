@@ -65,7 +65,7 @@ class ChripPolicy
      */
     public function delete(User $user, Chrip $chrip)
     {
-        //
+        return $this->update($user,$chrip);
     }
 
     /**
